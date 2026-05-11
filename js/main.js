@@ -67,11 +67,34 @@ function splitAndAnimate(el) {
 const heroTitle = document.getElementById('heroTitle');
 if (heroTitle) splitAndAnimate(heroTitle);
 
-// Fade in supporting hero elements
+// Fade in supporting hero elements + typewriter no subtitle
 setTimeout(() => {
   document.getElementById('heroTag')?.classList.add('visible');
-  document.getElementById('heroSub')?.classList.add('visible');
   document.getElementById('heroActions')?.classList.add('visible');
+
+  const heroSub  = document.getElementById('heroSub');
+  const TW_TEXT  = 'Onde toca, ninguém fica parado.';
+  const TW_SPEED = 45; // ms por letra
+
+  if (heroSub) {
+    heroSub.classList.add('visible');
+    const cursor = document.createElement('span');
+    cursor.className = 'tw-cursor';
+    heroSub.appendChild(cursor);
+
+    let i = 0;
+    const type = () => {
+      if (i < TW_TEXT.length) {
+        cursor.insertAdjacentText('beforebegin', TW_TEXT[i]);
+        i++;
+        setTimeout(type, TW_SPEED + Math.random() * 25);
+      } else {
+        // cursor some 1.5s depois de terminar
+        setTimeout(() => cursor.classList.add('done'), 1500);
+      }
+    };
+    setTimeout(type, 400); // pequeno delay antes de começar
+  }
 }, 180);
 
 // ─── Music — Horizontal Scroll Carousel ──────────────────
@@ -375,18 +398,127 @@ document.querySelectorAll('.g-item').forEach(card => {
   });
 });
 
-// ─── 2. Glitch periódico no título ───────────────────────
+// ─── Video Facade ─────────────────────────────────────────
+const ytFacade = document.getElementById('ytFacade');
+const ytThumb  = document.getElementById('ytThumb');
+
+if (ytFacade && ytThumb) {
+  const vid = ytFacade.dataset.vid;
+  // tenta maxresdefault, cai para hqdefault se não existir
+  const img = new Image();
+  img.src = `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`;
+  img.onload  = () => { ytThumb.src = img.src; };
+  img.onerror = () => { ytThumb.src = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`; };
+
+  ytFacade.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0&modestbranding=1`;
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    // remove thumb, overlay, play btn e label
+    ytFacade.innerHTML = '';
+    ytFacade.appendChild(iframe);
+    ytFacade.style.cursor = 'default';
+  });
+}
+
+// ─── Magnetic Button + Text Scramble ─────────────────────
+const bookWrap  = document.getElementById('heroBookWrap');
+const bookBtn   = document.getElementById('heroBook');
+const bookLabel = bookBtn?.querySelector('.hero-book-label');
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ#@$%&*';
+const BOOK_ORIGINAL  = bookLabel?.dataset.text || 'Contratar';
+
+let bookMagX = 0, bookMagY = 0;
+let bookTX = 0, bookTY = 0;
+let bookMagActive = false;
+let bookRafId = null;
+let scrambleTimer = null;
+
+// Magnetic lerp loop
+function bookLerp() {
+  const tx = bookMagActive ? bookMagX : 0;
+  const ty = bookMagActive ? bookMagY : 0;
+  bookTX += (tx - bookTX) * 0.12;
+  bookTY += (ty - bookTY) * 0.12;
+  if (bookBtn) bookBtn.style.transform = `translate(${bookTX.toFixed(2)}px, ${bookTY.toFixed(2)}px)`;
+  bookRafId = requestAnimationFrame(bookLerp);
+}
+if (bookBtn) bookRafId = requestAnimationFrame(bookLerp);
+
+if (bookWrap) {
+  bookWrap.addEventListener('mousemove', e => {
+    const rect = bookBtn.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 140) {
+      bookMagActive = true;
+      bookMagX = dx * 0.35;
+      bookMagY = dy * 0.35;
+    }
+  });
+  bookWrap.addEventListener('mouseleave', () => { bookMagActive = false; });
+}
+
+// Text scramble on hover
+function scramble(el, original, duration = 500) {
+  if (scrambleTimer) clearInterval(scrambleTimer);
+  const steps = Math.ceil(duration / 40);
+  let step = 0;
+  scrambleTimer = setInterval(() => {
+    const progress = step / steps;
+    el.textContent = original.split('').map((char, i) => {
+      if (char === ' ') return ' ';
+      if (i / original.length < progress) return char;
+      return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+    }).join('');
+    step++;
+    if (step > steps) {
+      clearInterval(scrambleTimer);
+      el.textContent = original;
+    }
+  }, 40);
+}
+
+if (bookBtn && bookLabel) {
+  bookBtn.addEventListener('mouseenter', () => scramble(bookLabel, BOOK_ORIGINAL, 480));
+  bookBtn.addEventListener('mouseleave', () => {
+    if (scrambleTimer) clearInterval(scrambleTimer);
+    bookLabel.textContent = BOOK_ORIGINAL;
+  });
+}
+
+// ─── 2. Glitch periódico + hover por letra ───────────────
 const glitchTitle = document.getElementById('heroTitle');
 if (glitchTitle) {
+  // Glitch geral periódico (5–8s)
   const triggerGlitch = () => {
     glitchTitle.classList.add('glitching');
     setTimeout(() => glitchTitle.classList.remove('glitching'), 520);
   };
-  // Primeiro glitch após 3s, depois a cada 5-8s aleatório
   setTimeout(function scheduleGlitch() {
     triggerGlitch();
     setTimeout(scheduleGlitch, 5000 + Math.random() * 3000);
   }, 3000);
+
+  // Glitch letra por letra no hover
+  let charGlitchRunning = false;
+  glitchTitle.addEventListener('mouseenter', () => {
+    if (charGlitchRunning) return;
+    charGlitchRunning = true;
+    const chars = [...glitchTitle.querySelectorAll('.char-inner')];
+    chars.forEach((c, i) => {
+      setTimeout(() => {
+        c.classList.add('char-glitch');
+        setTimeout(() => c.classList.remove('char-glitch'), 400);
+      }, i * 55);
+    });
+    // libera depois que a cascata terminar
+    setTimeout(() => { charGlitchRunning = false; }, chars.length * 55 + 420);
+  });
 }
 
 // ─── 3. Equalizer no hero ────────────────────────────────

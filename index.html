@@ -53,7 +53,7 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg">
-      <img src="images/hero.jpg" alt="DJ Piriquita no palco" class="hero-img" id="heroImg">
+      <img src="images/hero.png" alt="DJ Piriquita no palco" class="hero-img" id="heroImg">
       <div class="hero-overlay"></div>
       <!-- Equalizer background -->
       <div class="hero-eq" id="heroEq" aria-hidden="true"></div>
@@ -61,10 +61,27 @@
     <div class="hero-content">
       <p class="hero-tag" id="heroTag">Open Format &bull; Funk &bull; House &bull; Mandelão</p>
       <h1 class="hero-title" id="heroTitle">PIRIQUITA</h1>
-      <p class="hero-sub" id="heroSub">Onde toca, ninguém fica parado.</p>
+      <p class="hero-sub" id="heroSub"></p>
       <div class="hero-actions" id="heroActions">
-        <a href="#music" class="btn-primary"><span>Ouça Agora</span></a>
-        <a href="#contact" class="btn-ghost"><span>Contratar</span></a>
+
+        <!-- Plataformas -->
+        <div class="hero-platforms">
+          <a href="https://open.spotify.com/intl-pt/artist/6hFugN7EgBKUCxqXmvjKez" target="_blank" rel="noopener" class="hero-plat">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Spotify
+          </a>
+          <span class="hero-plat-sep">·</span>
+          <a href="https://soundcloud.com/piriquitadj" target="_blank" rel="noopener" class="hero-plat">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.5 13.4a.5.5 0 0 0-.5.5v1.7a.5.5 0 0 0 1 0v-1.7a.5.5 0 0 0-.5-.5zm1.7-.6a.5.5 0 0 0-.5.5v2.8a.5.5 0 0 0 1 0v-2.8a.5.5 0 0 0-.5-.5zm1.7-.5a.5.5 0 0 0-.5.5v3.3a.5.5 0 0 0 1 0v-3.3a.5.5 0 0 0-.5-.5zm1.7-.4a.6.6 0 0 0-.6.6v3.7a.6.6 0 0 0 1.2 0v-3.7a.6.6 0 0 0-.6-.6zm1.8-.2a.7.7 0 0 0-.7.7v4.1a.7.7 0 0 0 1.4 0V12.6a.7.7 0 0 0-.7-.7zm1.8 0a.7.7 0 0 0-.7.7v4.1a.7.7 0 0 0 1.4 0V12.6a.7.7 0 0 0-.7-.7zm1.8-.2a.8.8 0 0 0-.8.8v4.5a.8.8 0 0 0 1.6 0v-4.5a.8.8 0 0 0-.8-.8zm5.7-5.6c-.4 0-.8.1-1.1.2C14.9 4.3 13.3 3 11.4 3c-.5 0-1 .1-1.4.3-.1.1-.2.2-.2.3v9.6c0 .2.1.3.3.3H18c.2 0 .3-.1.3-.3V9.9c0-1.8-1.5-3.3-3.3-3.3z"/></svg>
+            SoundCloud
+          </a>
+          <span class="hero-plat-sep">·</span>
+          <a href="https://www.youtube.com/@piriquitadj/videos" target="_blank" rel="noopener" class="hero-plat">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+
       </div>
     </div>
     <div class="hero-side-socials">
@@ -87,26 +104,59 @@
     </div>
   </section>
 
-<!-- ABOUT -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="about-wrap">
+
+      <!-- Imagem -->
       <div class="about-img-wrap reveal-left">
         <img src="images/about.png" alt="DJ Piriquita" style="object-position: center top;">
+        <div class="about-badge">
+          <span class="about-badge-label">Est.</span>
+          <strong class="about-badge-year">2021</strong>
+        </div>
+        <div class="about-location">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Brasil
+        </div>
       </div>
+
+      <!-- Texto -->
       <div class="about-text">
         <span class="label reveal-up">Sobre</span>
-        <h2 class="split-heading reveal-up">Transformando noites comuns em histórias inesquecíveis.</h2>
-        <p class="reveal-up">DJ e produtor brasileiro com uma proposta única: <strong>open format</strong> que mistura Funk, House, Mandelão e os maiores hits do momento em sets que fazem o público não parar.</p>
-        <p class="reveal-up">Disponível para festas, eventos corporativos, casamentos e festivais em todo o Brasil.</p>
-        <div class="tags reveal-up">
-          <span>Funk</span>
-          <span>House</span>
-          <span>Mandelão</span>
-          <span>Open Format</span>
-          <span>Hits</span>
+
+        <h2 class="about-heading reveal-up">
+          Transformando<br>
+          <em>noites comuns</em><br>
+          em histórias<br>
+          inesquecíveis.
+        </h2>
+
+        <div class="about-divider reveal-up">
+          <span class="about-divider-line"></span>
+          <span class="about-divider-text">Open Format DJ</span>
+          <span class="about-divider-line"></span>
         </div>
-        <a href="#contact" class="btn-primary reveal-up"><span>Contratar</span></a>
+
+        <p class="reveal-up">DJ e produtor brasileiro com uma proposta única: <strong>open format</strong> que mistura Funk, House, Mandelão e os maiores hits do momento em sets que fazem o público não parar de dançar.</p>
+
+        <p class="reveal-up">Presente em festas, eventos corporativos, casamentos e festivais em todo o Brasil.</p>
+
+        <div class="about-genres reveal-up">
+          <span data-tip="Batida pesada, graves que fazem tremer e muito rebolado. O estilo que domina as pistas brasileiras.">Funk</span>
+          <span data-tip="Eletrônico 4x4, grooves dançantes e energia constante. Feito pra não parar de dançar.">House</span>
+          <span data-tip="O funk acelerado que veio pra tomar conta. Pesado, rápido e completamente viciante.">Mandelão</span>
+          <span data-tip="Sem fronteiras: mistura tudo que a pista pede, do funk ao pop, do house ao hit do momento.">Open Format</span>
+          <span data-tip="Os maiores sucessos do momento — todo mundo canta junto sem exceção.">Hits</span>
+        </div>
+
+        <div class="about-availability reveal-up">
+          <span class="about-avail-dot"></span>
+          <span>Disponível para shows em 2026</span>
+          <a href="#contact">→ Falar com agência</a>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -313,6 +363,30 @@
     </div>
   </section>
 
+  <!-- VIDEO -->
+  <section id="video" class="section section-dark">
+    <div class="video-wrap">
+      <div class="video-header reveal-up">
+        <span class="label">Podcast</span>
+        <h2>PIRICAST</h2>
+        <p>Sets, bastidores e muito papo. Toda semana no YouTube.</p>
+      </div>
+      <div class="yt-facade reveal-up" id="ytFacade" data-vid="HiPQk6iTJzI" style="transition-delay:0.15s">
+        <img class="yt-thumb" id="ytThumb" src="" alt="PIRICAST — DJ Piriquita">
+        <div class="yt-overlay"></div>
+        <button class="yt-play" aria-label="Reproduzir vídeo">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="yt-duration">Assistir no YouTube</div>
+      </div>
+      <a class="yt-channel reveal-up" href="https://www.youtube.com/@piriquitadj/videos" target="_blank" rel="noopener" style="transition-delay:0.25s">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Ver todos os vídeos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- GALLERY -->
   <section id="gallery" class="section">
     <div class="section-head reveal-up">
@@ -367,7 +441,7 @@
         </a>
       </div>
       <div class="contact-img reveal-right">
-        <img src="images/hero.jpg" alt="DJ Piriquita" style="object-position: center 30%;">
+        <img src="images/hero.png" alt="DJ Piriquita" style="object-position: center 30%;">
       </div>
     </div>
   </section>
@@ -404,6 +478,6 @@
     <div class="lb-counter"><span id="lbCurrent">1</span> / <span id="lbTotal">5</span></div>
   </div>
 
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
