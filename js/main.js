@@ -1,37 +1,26 @@
-// ─── Custom Cursor ───────────────────────────────────────
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-let ringX  = mouseX;
-let ringY  = mouseY;
+// ─── Preloader ───────────────────────────────────────────
+const preloader  = document.getElementById('preloader');
+const preBarFill = document.getElementById('preBarFill');
+let preProgress  = 0;
 
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
-  dot.classList.remove('hidden');
-  ring.classList.remove('hidden');
+// Simula progresso de carregamento
+const preInterval = setInterval(() => {
+  preProgress += Math.random() * 18;
+  if (preProgress > 90) preProgress = 90;
+  if (preBarFill) preBarFill.style.width = preProgress + '%';
+}, 120);
+
+window.addEventListener('load', () => {
+  clearInterval(preInterval);
+  if (preBarFill) preBarFill.style.width = '100%';
+  setTimeout(() => {
+    if (preloader) preloader.classList.add('hide');
+    document.body.style.overflow = '';
+  }, 350);
 });
 
-document.addEventListener('mouseleave', () => {
-  dot.classList.add('hidden');
-  ring.classList.add('hidden');
-});
-
-(function lerpRing() {
-  ringX += (mouseX - ringX) * 0.1;
-  ringY += (mouseY - ringY) * 0.1;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
-  requestAnimationFrame(lerpRing);
-})();
-
-document.querySelectorAll('a, button, .g-item, .tags span').forEach(el => {
-  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
-});
+// Bloqueia scroll enquanto preloader está visível
+document.body.style.overflow = 'hidden';
 
 // ─── Navbar ──────────────────────────────────────────────
 const navbar = document.getElementById('navbar');
@@ -86,17 +75,44 @@ setTimeout(() => {
 }, 180);
 
 // ─── Music — Horizontal Scroll Carousel ──────────────────
-const msSection  = document.getElementById('music');
-const msCardsEl  = document.getElementById('msCards');
-const msCards    = [...document.querySelectorAll('.ms-card')];
-const msDots     = [...document.querySelectorAll('.ms-dot')];
-const msNumEl    = document.getElementById('msNum');
-const msInfoNum  = document.getElementById('msInfoNum');
-const msTitle    = document.getElementById('msInfoTitle');
-const msSub      = document.getElementById('msInfoSub');
-const msBtn      = document.getElementById('msInfoBtn');
-const msFill     = document.getElementById('msProgressFill');
-const MS_TOTAL   = msCards.length;
+const msSection    = document.getElementById('music');
+const msCardsEl    = document.getElementById('msCards');
+const msCards      = [...document.querySelectorAll('.ms-card')];
+const msDots       = [...document.querySelectorAll('.ms-dot')];
+const msNumEl      = document.getElementById('msNum');
+const msInfoNum    = document.getElementById('msInfoNum');
+const msTitle      = document.getElementById('msInfoTitle');
+const msSub        = document.getElementById('msInfoSub');
+const msBtn        = document.getElementById('msInfoBtn');
+const msFill       = document.getElementById('msProgressFill');
+const msPlayerArt  = document.getElementById('msPlayerArt');
+const msPlayerStr  = document.getElementById('msPlayerStreams');
+const msTimeA      = document.getElementById('msPlayerTimeA');
+const msTimeB      = document.getElementById('msPlayerTimeB');
+const msPlayerEl   = document.getElementById('msPlayer');
+const msPlayBtn    = document.getElementById('msPlayBtn');
+const MS_TOTAL     = msCards.length;
+
+// Fake durations per track
+const MS_DURATIONS = [
+  '3:02','3:45','2:58','3:31','2:47',
+  '3:14','3:08','2:52','3:27','3:19'
+];
+
+// Play button toggle (visual only)
+let msIsPlaying = false;
+if (msPlayBtn) {
+  msPlayBtn.addEventListener('click', () => {
+    msIsPlaying = !msIsPlaying;
+    msPlayerEl?.classList.toggle('playing', msIsPlaying);
+  });
+}
+
+// Sync scrubber thumb with fill position
+function setPlayerThumb(pct) {
+  const thumb = document.querySelector('.ms-player-thumb');
+  if (thumb) thumb.style.left = (pct * 100).toFixed(1) + '%';
+}
 
 const MS_CARD_W  = 260;
 const MS_GAP     = 80;
@@ -106,8 +122,9 @@ let msLastIdx = -1;
 
 // ── Animated info update ──────────────────────────────────
 function updateMusicInfo(idx) {
-  const data = msCards[idx]?.dataset || {};
+  const data   = msCards[idx]?.dataset || {};
   const numStr = String(idx + 1).padStart(2, '0');
+  const dur    = MS_DURATIONS[idx] || '3:00';
 
   // Title slide-out → swap → slide-in
   if (msTitle) {
@@ -120,16 +137,36 @@ function updateMusicInfo(idx) {
     }, 220);
   }
 
-  // Sub fade-out → swap → fade-in
+  // Artist fade
   if (msSub) {
     msSub.classList.add('ms-out');
     setTimeout(() => {
-      msSub.textContent = `${data.feat || ''} · ${data.streams || ''}`;
+      msSub.textContent = data.feat || '';
       msSub.classList.remove('ms-out');
     }, 200);
   }
 
-  // Number flip
+  // Album art swap in player
+  if (msPlayerArt) {
+    const artEl = msCards[idx]?.querySelector('.ms-card-art');
+    const bg    = artEl ? artEl.style.backgroundImage : '';
+    msPlayerArt.style.backgroundImage = bg;
+  }
+
+  // Streams
+  if (msPlayerStr) {
+    msPlayerStr.classList.add('ms-out');
+    setTimeout(() => {
+      msPlayerStr.textContent = data.streams || '';
+      msPlayerStr.classList.remove('ms-out');
+    }, 200);
+  }
+
+  // Duration labels
+  if (msTimeB) msTimeB.textContent = dur;
+  if (msTimeA) msTimeA.textContent = '0:00';
+
+  // Number flip (hidden compat element)
   const numInner = msInfoNum?.querySelector('.ms-info-num-inner');
   if (numInner) {
     numInner.classList.add('ms-flip-out');
@@ -198,7 +235,20 @@ function updateMusicCarousel() {
   const scrollable = msSection.offsetHeight - window.innerHeight;
   const progress   = Math.max(0, Math.min(1, -rect.top / scrollable));
 
-  if (msFill) msFill.style.width = (progress * 100) + '%';
+  if (msFill) {
+    const pct = progress * 100;
+    msFill.style.width = pct + '%';
+    setPlayerThumb(progress);
+
+    // Update elapsed time label based on scroll progress within current track
+    const dur   = MS_DURATIONS[Math.round(progress * (MS_TOTAL - 1))] || '3:00';
+    const parts = dur.split(':');
+    const total = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+    // progress within the current card window
+    const cardProgress = (progress * (MS_TOTAL - 1)) % 1;
+    const elapsed = Math.round(cardProgress * total);
+    if (msTimeA) msTimeA.textContent = `${Math.floor(elapsed/60)}:${String(elapsed%60).padStart(2,'0')}`;
+  }
 
   const targetFloat = progress * (MS_TOTAL - 1);
   const activeIdx   = Math.round(targetFloat);
@@ -235,13 +285,50 @@ window.addEventListener('scroll', updateMusicCarousel, { passive: true });
 
 // ─── Parallax Hero ───────────────────────────────────────
 const heroImg = document.getElementById('heroImg');
+const heroSection = document.getElementById('hero');
+
+// scroll parallax
+let heroScrollY = 0;
 if (heroImg) {
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y < window.innerHeight * 1.2) {
-      heroImg.style.transform = `translateY(${y * 0.35}px)`;
+    heroScrollY = window.scrollY;
+    if (heroScrollY < window.innerHeight * 1.2) {
+      applyHeroTransform();
     }
   }, { passive: true });
+}
+
+// mouse parallax — só a imagem se move
+let heroMX = 0, heroMY = 0;
+let heroTX = 0, heroTY = 0;
+let heroRafId = null;
+
+if (heroSection && heroImg) {
+  heroSection.addEventListener('mousemove', e => {
+    const cx = heroSection.offsetWidth  / 2;
+    const cy = heroSection.offsetHeight / 2;
+    heroMX = ((e.clientX - cx) / cx) * 18;   // ±18px horizontal
+    heroMY = ((e.clientY - cy) / cy) * 12;   // ±12px vertical
+    if (!heroRafId) heroRafId = requestAnimationFrame(lerpHero);
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    heroMX = 0;
+    heroMY = 0;
+  });
+}
+
+function lerpHero() {
+  heroTX += (heroMX - heroTX) * 0.07;
+  heroTY += (heroMY - heroTY) * 0.07;
+  applyHeroTransform();
+  heroRafId = requestAnimationFrame(lerpHero);
+}
+
+function applyHeroTransform() {
+  if (!heroImg) return;
+  const scrollShift = heroScrollY * 0.35;
+  heroImg.style.transform = `translate(${heroTX}px, calc(${heroTY}px + ${scrollShift}px))`;
 }
 
 // ─── Scroll Reveal ───────────────────────────────────────
@@ -252,8 +339,154 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
 
-document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right').forEach(el => {
+document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .g-wipe').forEach(el => {
   revealObserver.observe(el);
+});
+
+// Fallback: revela itens já visíveis no carregamento (ex: navegação via #hash)
+setTimeout(() => {
+  document.querySelectorAll('.g-wipe:not(.visible), .reveal-up:not(.visible), .reveal-left:not(.visible), .reveal-right:not(.visible)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+}, 50);
+
+// ─── Gallery — 3D tilt on hover ──────────────────────────
+document.querySelectorAll('.g-item').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect  = card.getBoundingClientRect();
+    const cx    = rect.left + rect.width  / 2;
+    const cy    = rect.top  + rect.height / 2;
+    const rx    = -((e.clientY - cy) / (rect.height / 2)) * 6;
+    const ry    =  ((e.clientX - cx) / (rect.width  / 2)) * 8;
+    card.style.transform = `scale(1.03) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    const img = card.querySelector('img');
+    if (img) img.style.transform = `scale(1.06) translateX(${ry * -0.8}px) translateY(${rx * 0.8}px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    const img = card.querySelector('img');
+    if (img) img.style.transform = '';
+  });
+});
+
+// ─── 2. Glitch periódico no título ───────────────────────
+const glitchTitle = document.getElementById('heroTitle');
+if (glitchTitle) {
+  const triggerGlitch = () => {
+    glitchTitle.classList.add('glitching');
+    setTimeout(() => glitchTitle.classList.remove('glitching'), 520);
+  };
+  // Primeiro glitch após 3s, depois a cada 5-8s aleatório
+  setTimeout(function scheduleGlitch() {
+    triggerGlitch();
+    setTimeout(scheduleGlitch, 5000 + Math.random() * 3000);
+  }, 3000);
+}
+
+// ─── 3. Equalizer no hero ────────────────────────────────
+const heroEq = document.getElementById('heroEq');
+if (heroEq) {
+  const BAR_COUNT = 32;
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const span = document.createElement('span');
+    const dur  = (0.5 + Math.random() * 0.9).toFixed(2) + 's';
+    const del  = (-Math.random() * 2).toFixed(2) + 's';
+    span.style.setProperty('--d', dur);
+    span.style.animationDelay = del;
+    heroEq.appendChild(span);
+  }
+}
+
+// ─── 4. Stats counter ────────────────────────────────────
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el       = entry.target;
+    const target   = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals || '0');
+    const duration = 1800;
+    const start    = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      // easeOutExpo
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const val  = target * ease;
+      el.textContent = decimals > 0 ? val.toFixed(decimals) : Math.floor(val);
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+    };
+    requestAnimationFrame(tick);
+    statsObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-num').forEach(el => statsObserver.observe(el));
+
+// ─── 5. Lightbox ─────────────────────────────────────────
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lbImg');
+const lbClose   = document.getElementById('lbClose');
+const lbPrev    = document.getElementById('lbPrev');
+const lbNext    = document.getElementById('lbNext');
+const lbBackdrop = document.getElementById('lbBackdrop');
+const lbCurrent = document.getElementById('lbCurrent');
+const lbTotal   = document.getElementById('lbTotal');
+
+// Recolhe todas as imagens da galeria
+const galleryImgs = [...document.querySelectorAll('.g-item img')];
+let lbIndex = 0;
+
+if (lbTotal) lbTotal.textContent = galleryImgs.length;
+
+function lbOpen(idx) {
+  lbIndex = idx;
+  lbImg.src = galleryImgs[idx].src;
+  lbImg.alt = galleryImgs[idx].alt;
+  if (lbCurrent) lbCurrent.textContent = idx + 1;
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function lbClose_fn() {
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function lbNavigate(dir) {
+  const wrap    = document.querySelector('.lb-img-wrap');
+  lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length;
+  wrap.classList.add('lb-transition');
+  setTimeout(() => {
+    lbImg.src = galleryImgs[lbIndex].src;
+    lbImg.alt = galleryImgs[lbIndex].alt;
+    if (lbCurrent) lbCurrent.textContent = lbIndex + 1;
+    wrap.classList.remove('lb-transition');
+  }, 200);
+}
+
+// Abre ao clicar na imagem
+galleryImgs.forEach((img, i) => {
+  img.parentElement.style.cursor = 'pointer';
+  img.parentElement.addEventListener('click', () => lbOpen(i));
+});
+
+if (lbClose)   lbClose.addEventListener('click', lbClose_fn);
+if (lbBackdrop) lbBackdrop.addEventListener('click', lbClose_fn);
+if (lbPrev)    lbPrev.addEventListener('click', () => lbNavigate(-1));
+if (lbNext)    lbNext.addEventListener('click', () => lbNavigate(1));
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape')      lbClose_fn();
+  if (e.key === 'ArrowLeft')   lbNavigate(-1);
+  if (e.key === 'ArrowRight')  lbNavigate(1);
 });
