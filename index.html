@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DJ Piriquita — Open Format, Funk, House, Mandelão. Transformando noites comuns em histórias inesquecíveis.">
+  <title>DJ Piriquita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">PIRIQUITA</a>
+      <ul class="nav-links">
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#music">Música</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+        <li><a href="#contact" class="nav-cta"><span>Contratar</span></a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mobile-link">Sobre</a></li>
+      <li><a href="#music" class="mobile-link">Música</a></li>
+      <li><a href="#gallery" class="mobile-link">Galeria</a></li>
+      <li><a href="#contact" class="mobile-link">Contratar</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img src="images/hero.jpg" alt="DJ Piriquita no palco" class="hero-img" id="heroImg">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag" id="heroTag">Open Format &bull; Funk &bull; House &bull; Mandelão</p>
+      <h1 class="hero-title" id="heroTitle">PIRIQUITA</h1>
+      <p class="hero-sub" id="heroSub">Onde toca, ninguém fica parado.</p>
+      <div class="hero-actions" id="heroActions">
+        <a href="#music" class="btn-primary"><span>Ouça Agora</span></a>
+        <a href="#contact" class="btn-ghost"><span>Contratar</span></a>
+      </div>
+    </div>
+    <div class="hero-side-socials">
+      <a href="https://www.instagram.com/piriquitadj/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://open.spotify.com/intl-pt/artist/6hFugN7EgBKUCxqXmvjKez" target="_blank" rel="noopener" aria-label="Spotify">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      </a>
+      <a href="https://soundcloud.com/piriquitadj" target="_blank" rel="noopener" aria-label="SoundCloud">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.5 13.4a.5.5 0 0 0-.5.5v1.7a.5.5 0 0 0 1 0v-1.7a.5.5 0 0 0-.5-.5zm1.7-.6a.5.5 0 0 0-.5.5v2.8a.5.5 0 0 0 1 0v-2.8a.5.5 0 0 0-.5-.5zm1.7-.5a.5.5 0 0 0-.5.5v3.3a.5.5 0 0 0 1 0v-3.3a.5.5 0 0 0-.5-.5zm1.7-.4a.6.6 0 0 0-.6.6v3.7a.6.6 0 0 0 1.2 0v-3.7a.6.6 0 0 0-.6-.6zm1.8-.2a.7.7 0 0 0-.7.7v4.1a.7.7 0 0 0 1.4 0V12.6a.7.7 0 0 0-.7-.7zm1.8 0a.7.7 0 0 0-.7.7v4.1a.7.7 0 0 0 1.4 0V12.6a.7.7 0 0 0-.7-.7zm1.8-.2a.8.8 0 0 0-.8.8v4.5a.8.8 0 0 0 1.6 0v-4.5a.8.8 0 0 0-.8-.8zm5.7-5.6c-.4 0-.8.1-1.1.2C14.9 4.3 13.3 3 11.4 3c-.5 0-1 .1-1.4.3-.1.1-.2.2-.2.3v9.6c0 .2.1.3.3.3H18c.2 0 .3-.1.3-.3V9.9c0-1.8-1.5-3.3-3.3-3.3z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@piriquitadj/videos" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      <div class="marquee-track">
+        <span>PIRIQUITA</span><span class="sep">✦</span>
+        <span>FUNK</span><span class="sep">✦</span>
+        <span>HOUSE</span><span class="sep">✦</span>
+        <span>MANDELÃO</span><span class="sep">✦</span>
+        <span>OPEN FORMAT</span><span class="sep">✦</span>
+        <span>ONDE TOCA, NINGUÉM FICA PARADO</span><span class="sep">✦</span>
+        <span>PIRIQUITA</span><span class="sep">✦</span>
+        <span>FUNK</span><span class="sep">✦</span>
+        <span>HOUSE</span><span class="sep">✦</span>
+        <span>MANDELÃO</span><span class="sep">✦</span>
+        <span>OPEN FORMAT</span><span class="sep">✦</span>
+        <span>ONDE TOCA, NINGUÉM FICA PARADO</span><span class="sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="about-wrap">
+      <div class="about-img-wrap reveal-left">
+        <img src="images/about.png" alt="DJ Piriquita" style="object-position: center top;">
+      </div>
+      <div class="about-text">
+        <span class="label reveal-up">Sobre</span>
+        <h2 class="split-heading reveal-up">Transformando noites comuns em histórias inesquecíveis.</h2>
+        <p class="reveal-up">DJ e produtor brasileiro com uma proposta única: <strong>open format</strong> que mistura Funk, House, Mandelão e os maiores hits do momento em sets que fazem o público não parar.</p>
+        <p class="reveal-up">Disponível para festas, eventos corporativos, casamentos e festivais em todo o Brasil.</p>
+        <div class="tags reveal-up">
+          <span>Funk</span>
+          <span>House</span>
+          <span>Mandelão</span>
+          <span>Open Format</span>
+          <span>Hits</span>
+        </div>
+        <a href="#contact" class="btn-primary reveal-up"><span>Contratar</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="ms-sticky">
+
+      <!-- Top bar -->
+      <div class="ms-top">
+        <span class="label">— Música</span>
+        <span class="ms-counter"><span id="msNum">01</span><span class="ms-sep"> / 10</span></span>
+      </div>
+
+      <!-- 3D Card Scene -->
+      <div class="ms-scene">
+        <div class="ms-cards" id="msCards">
+          <div class="ms-card"
+               data-title="Put@ Só Bafora Bico Verde"
+               data-feat="feat. DJ TF • MC 7 Belo"
+               data-streams="1.4M plays"
+               data-href="https://open.spotify.com/track/1eUOE2SOpRVp377WaHJNCH">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02580a154136a3b5aa06fa4f56')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Garota Interestelar"
+               data-feat="feat. FRANCISS"
+               data-streams="562K plays"
+               data-href="https://open.spotify.com/track/0Ei3Wf20kv40d6df2bYel7">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e029e09e62864c8f1d9a2255c06')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="To Descontrolado"
+               data-feat="feat. DJ Martinelli • DJ TF"
+               data-streams="234K plays"
+               data-href="https://open.spotify.com/track/2xIsCmqfxADnXbyrmQ7Hec">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02bef01cfc180c7801cbf0672b')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Deixa Ela Jogar"
+               data-feat="feat. DJ Ramonstro • MC ADR SC"
+               data-streams="387K plays"
+               data-href="https://open.spotify.com/track/3aLUY8anzDm5IAeVfkfG8W">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e029ba46c3e93fed0668f7af03f')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Bunda no Calcanhar"
+               data-feat="feat. DJ TF • DJ Martinelli • MC Brunin JP"
+               data-streams="50K plays"
+               data-href="https://open.spotify.com/track/0SORUe0uWMGwdmDdBlcCFA">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e024a0cbb724f961a2f35c51225')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Famoso Machuca Xota"
+               data-feat="feat. DJ Martinelli • Mc Larissa"
+               data-streams="2025"
+               data-href="https://open.spotify.com/track/3M7hI2ioX4ZEk4qZtsRxZ5">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e0237b2d65dcaff6368ab5d47ca')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Antes Que A Ficante Veja"
+               data-feat="feat. DJ TF • DJ Martinelli • MC Daniel DN"
+               data-streams="2024"
+               data-href="https://open.spotify.com/track/7Cjya5Vx4uv5yRF0u8iq2u">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e0222e6c792fb68b412e57ef3a6')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="De Ponta a Ponta"
+               data-feat="feat. DJ Grecco • Mc Brunin JP"
+               data-streams="2024"
+               data-href="https://open.spotify.com/track/41n3dvLWE8QLI34AJCfw5b">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02a3a58b42f3d47818367f3095')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Vem Tombando"
+               data-feat="feat. DJ GUXTHA • DJ Martinelli • MC Bm"
+               data-streams="2025"
+               data-href="https://open.spotify.com/track/2o36K7M75bzDMmsSaKB5sJ">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e0260bee34a6ddf4a9dc80ec760')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>          <div class="ms-card"
+               data-title="Daora Legal"
+               data-feat="feat. DJ TF • DJ Leozin do SF • MC RR do Campos"
+               data-streams="2024"
+               data-href="https://open.spotify.com/track/6koBTZDQgZEJFSyauYGxDJ">
+            <div class="ms-card-art" style="background-image:url('https://i.scdn.co/image/ab67616d00001e02b54477d3ef4a6551f757192b')"></div>
+            <div class="ms-card-grad"></div>
+            <div class="ms-card-badge"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg> Spotify</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track info (bottom) -->
+      <div class="ms-info">
+        <div class="ms-info-inner" id="msInfo">
+          <div class="ms-info-num" id="msInfoNum"><span class="ms-info-num-inner">01</span></div>
+          <div class="ms-info-text">
+            <h3 class="ms-info-title" id="msInfoTitle">Put@ Só Bafora Bico Verde</h3>
+            <p class="ms-info-sub" id="msInfoSub">feat. DJ TF • MC 7 Belo &nbsp;·&nbsp; 1.4M plays</p>
+          </div>
+          <a class="ms-info-btn" id="msInfoBtn"
+             href="https://open.spotify.com/track/1eUOE2SOpRVp377WaHJNCH"
+             target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Ouvir
+          </a>
+        </div>
+        <div class="ms-progress"><div class="ms-progress-fill" id="msProgressFill"></div></div>
+      </div>
+
+      <!-- Side dots -->
+      <div class="ms-dots" id="msDots">
+        <span class="ms-dot active"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+        <span class="ms-dot"></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
+    <div class="section-head reveal-up">
+      <span class="label">Galeria</span>
+      <h2>Momentos</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item reveal-up">
+        <img src="images/gallery-4.png" alt="DJ Piriquita" style="object-position: center top;">
+        <div class="g-overlay"></div>
+      </div>
+      <div class="g-item g-tall reveal-up" style="transition-delay:0.1s">
+        <img src="images/gallery-1.jpg" alt="DJ Piriquita performance" style="object-position: center center;">
+        <div class="g-overlay"></div>
+      </div>
+      <div class="g-item reveal-up" style="transition-delay:0.2s">
+        <img src="images/gallery-5.png" alt="DJ Piriquita" style="object-position: center top;">
+        <div class="g-overlay"></div>
+      </div>
+      <div class="g-item reveal-up" style="transition-delay:0.15s">
+        <img src="images/gallery-2.jpg" alt="DJ Piriquita performance" style="object-position: center 70%;">
+        <div class="g-overlay"></div>
+      </div>
+      <div class="g-item reveal-up" style="transition-delay:0.25s">
+        <img src="images/gallery-3.jpg" alt="DJ Piriquita crowd" style="object-position: center center;">
+        <div class="g-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-dark">
+    <div class="contact-wrap">
+      <div class="contact-text">
+        <span class="label reveal-up">Booking</span>
+        <h2 class="reveal-up">Bora fazer história juntos?</h2>
+        <p class="reveal-up">Para contratar DJ Piriquita para o seu evento, entre em contato com a agência HEY!</p>
+        <a href="https://www.instagram.com/agency.hey/" target="_blank" rel="noopener" class="btn-primary reveal-up">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>@agency.hey</span>
+        </a>
+      </div>
+      <div class="contact-img reveal-right">
+        <img src="images/hero.jpg" alt="DJ Piriquita" style="object-position: center 30%;">
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">PIRIQUITA</p>
+      <nav class="footer-nav">
+        <a href="https://www.instagram.com/piriquitadj/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://open.spotify.com/intl-pt/artist/6hFugN7EgBKUCxqXmvjKez" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://soundcloud.com/piriquitadj" target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://www.youtube.com/@piriquitadj/videos" target="_blank" rel="noopener">YouTube</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 DJ Piriquita &mdash; Booking: <a href="https://www.instagram.com/agency.hey/" target="_blank" rel="noopener">@agency.hey</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
